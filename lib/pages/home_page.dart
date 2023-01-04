@@ -36,6 +36,7 @@ class _HomePageState extends State<HomePage> {
             controller: _newHabitNameController,
             onCancel: cancelNewHabit,
             onSave: saveNewHabit,
+            hint: 'Enter new habit',
           );
         });
   }
@@ -58,9 +59,11 @@ class _HomePageState extends State<HomePage> {
         context: context,
         builder: (context) {
           return MyAlertBox(
-              controller: _newHabitNameController,
-              onCancel: cancelNewHabit,
-              onSave: () => saveExisitingHabit(index));
+            controller: _newHabitNameController,
+            onCancel: cancelNewHabit,
+            onSave: () => saveExisitingHabit(index),
+            hint: todaysHabitList[index][0],
+          );
         });
   }
 
