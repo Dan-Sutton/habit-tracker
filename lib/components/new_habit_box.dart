@@ -1,20 +1,31 @@
 import 'package:flutter/material.dart';
 
 class NewHabitBox extends StatelessWidget {
-  const NewHabitBox({Key? key}) : super(key: key);
+  final controller;
+  final VoidCallback onSave;
+  final VoidCallback onCancel;
+
+  const NewHabitBox(
+      {Key? key,
+      required this.controller,
+      required this.onCancel,
+      required this.onSave})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      content: TextField(),
+      content: TextField(
+        controller: controller,
+      ),
       actions: [
         MaterialButton(
-          onPressed: () {},
-          child: Text("Save"),
+          onPressed: onSave,
+          child: const Text("Save"),
         ),
         MaterialButton(
-          onPressed: () {},
-          child: Text("Cancel"),
+          onPressed: onCancel,
+          child: const Text("Cancel"),
         )
       ],
     );

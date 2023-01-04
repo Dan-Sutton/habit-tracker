@@ -14,7 +14,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   List todaysHabitList = [
     ["Morning Run", false],
-    ["Reading Book", false]
+    ["Reading Book", false],
   ];
 
   bool habitCompleted = false;
@@ -25,12 +25,31 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
+  final _newHabitNameController = TextEditingController();
+
   void createNewHabit() {
     showDialog(
         context: context,
         builder: (context) {
-          return NewHabitBox();
+          return NewHabitBox(
+            controller: _newHabitNameController,
+            onCancel: cancelNewHabit,
+            onSave: saveNewHabit,
+          );
         });
+  }
+
+  void saveNewHabit() {
+    setState(() {
+      todaysHabitList.add([_newHabitNameController.text, false]);
+    });
+    _newHabitNameController.clear();
+    Navigator.of(context).pop();
+  }
+
+  void cancelNewHabit() {
+    _newHabitNameController.clear();
+    Navigator.of(context).pop();
   }
 
   @override
