@@ -20,7 +20,7 @@ class HabitTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Slidable(
-      endActionPane: ActionPane(motion: StretchMotion(), children: [
+      endActionPane: ActionPane(motion: const StretchMotion(), children: [
         SlidableAction(
           onPressed: settingsTapped,
           backgroundColor: Colors.grey,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:habit_tracker/components/habit_tile.dart';
+import 'package:habit_tracker/components/my_alert_box.dart';
 import 'package:habit_tracker/components/my_fab.dart';
 import 'package:habit_tracker/components/new_habit_box.dart';
 
@@ -52,6 +53,31 @@ class _HomePageState extends State<HomePage> {
     Navigator.of(context).pop();
   }
 
+  void openHabitSettings(int index) {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return MyAlertBox(
+              controller: _newHabitNameController,
+              onCancel: cancelNewHabit,
+              onSave: () => saveExisitingHabit(index));
+        });
+  }
+
+  void saveExisitingHabit(int index) {
+    setState(() {
+      todaysHabitList[index][0] = _newHabitNameController.text;
+    });
+    _newHabitNameController.clear();
+    Navigator.of(context).pop();
+  }
+
+  void deleteHabit(int index) {
+    setState(() {
+      todaysHabitList.removeAt(index);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,9 +91,12 @@ class _HomePageState extends State<HomePage> {
           return Padding(
             padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 15),
             child: HabitTile(
-                habitName: todaysHabitList[index][0],
-                habitCompleted: todaysHabitList[index][1],
-                onChanged: (value) => checkBoxTapped(value, index)),
+              habitName: todaysHabitList[index][0],
+              habitCompleted: todaysHabitList[index][1],
+              onChanged: (value) => checkBoxTapped(value, index),
+              deleteTapped: (context) => deleteHabit(index),
+              settingsTapped: (context) => openHabitSettings(index),
+            ),
           );
         }),
       ),
