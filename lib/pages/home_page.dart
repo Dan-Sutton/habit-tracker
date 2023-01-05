@@ -61,6 +61,15 @@ class _HomePageState extends State<HomePage> {
 
     Navigator.of(context).pop();
     db.updateDatabase();
+
+    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        duration: Duration(seconds: 1),
+        content: Text("New Habit added",
+            textAlign: TextAlign.center,
+            style: TextStyle(
+                color: Colors.white,
+                fontSize: 20,
+                fontWeight: FontWeight.w700))));
   }
 
   void cancelDialogBox() {
@@ -90,6 +99,15 @@ class _HomePageState extends State<HomePage> {
     _newHabitNameController.clear();
     Navigator.pop(context);
     db.updateDatabase();
+
+    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        duration: Duration(seconds: 1),
+        content: Text("Updated Habit",
+            textAlign: TextAlign.center,
+            style: TextStyle(
+                color: Colors.white,
+                fontSize: 20,
+                fontWeight: FontWeight.w700))));
   }
 
   void deleteHabit(int index) {
@@ -97,6 +115,15 @@ class _HomePageState extends State<HomePage> {
       db.todaysHabitList.removeAt(index);
     });
     db.updateDatabase();
+
+    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        duration: Duration(seconds: 1),
+        content: Text("Habit Deleted",
+            textAlign: TextAlign.center,
+            style: TextStyle(
+                color: Colors.white,
+                fontSize: 20,
+                fontWeight: FontWeight.w700))));
   }
 
   @override
