@@ -85,8 +85,36 @@ class _HabitTileState extends State<HabitTile> {
                         ),
                       );
                     }),
-                    body: Row(
-                      children: [Text('YUILGWFGYUIlwGFYUIlOWEGWYUILO')],
+                    body: GestureDetector(
+                      onTap: (() {
+                        setState(() {
+                          _isOpen = !_isOpen;
+                        });
+                      }),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 20),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: const [
+                                Expanded(
+                                  child: Text(
+                                    'YUILGWFGYUIlwGFYUIlOWEGWYUILOgfiuwegfigwieufgiwuegfiuwegifgwefgiuwgfiuwegifgweiufgiuwegfg',
+                                    style: TextStyle(
+                                      fontSize: 15,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 20,
+                          )
+                        ],
+                      ),
                     ))
               ],
               expansionCallback: (i, isOpen) {
