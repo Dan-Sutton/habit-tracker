@@ -106,6 +106,16 @@ class _HomePageState extends State<HomePage> {
       floatingActionButton: MyFloatingActionButton(onPressed: createNewHabit),
       body: ListView(
         children: [
+          AppBar(
+            toolbarHeight: 70,
+            title: const Text(
+              "Habit Tracker",
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 30,
+                  fontWeight: FontWeight.w700),
+            ),
+          ),
           MonthlySummary(
             datasets: db.heatMapDataSet,
             startDate: _myBox.get("START_DATE"),
