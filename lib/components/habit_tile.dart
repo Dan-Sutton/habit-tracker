@@ -5,6 +5,7 @@ import 'app_expansion_panel.dart';
 
 class HabitTile extends StatefulWidget {
   final String habitName;
+  final String? notes;
   final bool habitCompleted;
   final Function(bool?)? onChanged;
   final Function(BuildContext)? settingsTapped;
@@ -17,6 +18,7 @@ class HabitTile extends StatefulWidget {
     required this.onChanged,
     required this.settingsTapped,
     required this.deleteTapped,
+    this.notes,
   });
 
   @override
@@ -98,11 +100,11 @@ class _HabitTileState extends State<HabitTile> {
                             padding: const EdgeInsets.symmetric(horizontal: 20),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
-                              children: const [
+                              children: [
                                 Expanded(
                                   child: Text(
-                                    'Notes: This is a feature to be added!',
-                                    style: TextStyle(
+                                    'Notes: ${widget.notes ?? ""}',
+                                    style: const TextStyle(
                                       fontSize: 15,
                                     ),
                                   ),
