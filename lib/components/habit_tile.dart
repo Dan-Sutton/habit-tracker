@@ -101,7 +101,7 @@ class _HabitTileState extends State<HabitTile> {
                               children: const [
                                 Expanded(
                                   child: Text(
-                                    'YUILGWFGYUIlwGFYUIlOWEGWYUILOgfiuwegfigwieufgiwuegfiuwegifgwefgiuwgfiuwegifgweiufgiuwegfg',
+                                    'Notes: This is a feature to be added!',
                                     style: TextStyle(
                                       fontSize: 15,
                                     ),
